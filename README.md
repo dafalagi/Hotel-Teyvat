@@ -1,2 +1,2 @@
 # Hotel-Teyvat
-Project ini dibuat untuk memenuhi tugas mata kuliah asis Data 2 
+Project ini dibuat untuk memenuhi tugas mata kuliah Basis Data 2 
