@@ -25,15 +25,16 @@
     <?php
     $servername = "localhost";
     $username = "root";
-    $password = "10119113";
-    $database = "akademik";
+    $password = "";
+    $database = "db10119113";
 
     // Membuat koneksi
-    $conn = mysqli_connect($servername, $username, $password, $database);
+    $conn = new mysqli($servername, $username, $password, $database);
 
     // Cek koneksi
-    if (!$conn) {
-        die("<center>Koneksi Gagal: " . mysqli_connect_error());
+    if ($conn -> connect_errno == 0) {
+        echo "<center>Koneksi Berhasil";
+    } else {
+        echo "Error " . $conn -> connect_errno . " : " . $conn -> connect_error;
     }
-    echo "<center>Koneksi Berhasil";
     ?>
