@@ -6,7 +6,8 @@ body {
   height: 100%;
   font-family: "Poppins", sans-serif;
   color: #fff;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../img/cover-bg.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(../img/cover-bg.jpg);
   background-size: cover;
   background-position: center center;
   text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);

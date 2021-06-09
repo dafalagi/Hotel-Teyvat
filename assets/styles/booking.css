@@ -8,8 +8,14 @@
 body {
   background: #ffffff;
   padding: 0 10px;
+  /* text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5); */
+}
+/* Navbar */
+.navbar {
+  padding: 0.5rem;
 }
 
+/* Form */
 .wrapperform {
   max-width: 500px;
   width: 100%;
@@ -38,7 +44,7 @@ body {
 
 .wrapperform .form .input_field label {
   width: 200px;
-  color: black;
+  /* color: #214fc6; */
   margin-right: 10px;
   font-size: 17px;
 }
@@ -80,13 +86,13 @@ body {
   border: 0px;
   padding: 8px 10px;
   font-size: 15px;
-  border: 1px solid rgb(103, 103, 255);
+  border: 1px solid rgb(0, 0, 0);
   border-radius: 3px;
 }
 
 .wrapperform .form .input_field .input,
 .wrapperform .form .input_field .custom_select select :focus {
-  border: 1px solid rgb(103, 103, 255);
+  border: 1px solid rgb(0, 0, 0);
 }
 
 .wrapperform .form .input_field .btn {
@@ -94,13 +100,14 @@ body {
   padding: 8px 10px;
   font-size: 15px;
   border: 0px;
-  background: grey;
-  color: white;
+  background: #cfcfcf;
+  /* color: white; */
   cursor: pointer;
   border-radius: 3px;
   outline: none;
 }
 
 .wrapperform .form .input_field .btn:hover {
-  background: black;
+  background: #a1caf1;
 }
+/* Akhir dari Form */
