@@ -1,37 +1,40 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
+/* Global */
 html,
 body {
   width: 100%;
   height: 100%;
   font-family: "Poppins", sans-serif;
   color: #fff;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../img/cover-bg.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/cover-bg.jpg);
   background-size: cover;
   background-position: center center;
   text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.9);
 }
 
-/*-- Navbar --*/
+/* Navbar */
 .navbar {
   padding: 0.8 rem;
 }
 
 .navbar-brand {
+  font-family: "Lobster", sans-serif;
+  font-size: 35px;
   padding: 1rem;
-  padding-right: 10rem;
+  margin-right: 10rem;
 }
 
 .navbar-nav li {
   padding-right: 2rem;
 }
 
-/*-- Main --*/
-
-.cover-container {
-  max-width: 60em;
+/* Main */
+.cover-text {
   padding: 10rem 0;
+  padding-left: 10rem;
 }
 
 .cover-heading {
@@ -41,4 +44,167 @@ body {
 .btn-outline-light {
   padding: 0.5rem 1.5rem;
   border-radius: 10px !important;
+}
+
+/* Gallery */
+.margin {
+  margin-bottom: 1rem;
+}
+
+/* Modal */
+.carousel-item img {
+  height: 60em;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+@media (min-width: 576px) {
+  .carousel-item img {
+    height: 350px;
+  }
+}
+
+* {
+  transition: 0.3s;
+}
+
+#gallery {
+  padding: 0 15px;
+}
+#gallery img {
+  width: 100%;
+  height: 220px;
+  display: block;
+  margin: 15px 0;
+  border-radius: 300px 30px 300px 300px;
+}
+#gallery img:hover {
+  border-radius: 30px 30px 30px 30px;
+}
+
+#myModal .modal-content {
+  background: none;
+  border: none;
+}
+
+#myModal .modal-body {
+  padding: 0;
+  border: none;
+  position: relative;
+}
+#myModal .modal-body::before,
+#myModal .modal-body::after {
+  content: "";
+  height: 50px;
+  width: 50px;
+  display: block;
+  position: absolute;
+  background: white;
+  border-radius: 3px 10px;
+}
+@media (min-width: 768px) {
+  #myModal .modal-body::before,
+  #myModal .modal-body::after {
+    border-radius: 3px 30px;
+    height: 100px;
+    width: 100px;
+  }
+}
+#myModal .modal-body::before {
+  top: -5px;
+  left: -5px;
+}
+@media (min-width: 768px) {
+  #myModal .modal-body::before {
+    top: -15px;
+    left: -15px;
+  }
+}
+#myModal .modal-body::after {
+  bottom: -5px;
+  right: -5px;
+  z-index: -1;
+}
+@media (min-width: 768px) {
+  #myModal .modal-body::after {
+    bottom: -15px;
+    right: -15px;
+  }
+}
+#myModal .modal-footer {
+  border: none;
+  margin-top: 60px;
+}
+@media (min-width: 992px) {
+  #myModal .modal-footer {
+    margin-top: 40px;
+  }
+}
+#myModal .modal-footer .btn {
+  margin: auto;
+  border: solid 2px white;
+  background: none;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  padding: 0.2em 0.7em;
+}
+#myModal .modal-footer .btn:hover {
+  background: white;
+  color: black;
+}
+#myModal .carousel-control-prev,
+#myModal .carousel-control-next {
+  font-size: 2em;
+  top: auto;
+  opacity: 1;
+  bottom: -52px;
+}
+@media (min-width: 768px) {
+  #myModal .carousel-control-prev,
+  #myModal .carousel-control-next {
+    top: 0;
+    opacity: 0.5;
+    bottom: 0;
+  }
+}
+#myModal .carousel-control-next-icon,
+#myModal .carousel-control-prev-icon {
+  height: 30px;
+  width: 30px;
+}
+@media (min-width: 768px) {
+  #myModal .carousel-control-prev {
+    left: -90px;
+  }
+}
+@media (min-width: 768px) {
+  #myModal .carousel-control-next {
+    right: -90px;
+  }
+}
+#myModal .carousel-indicators {
+  bottom: -60px;
+}
+@media (min-width: 992px) {
+  #myModal .carousel-indicators {
+    bottom: -30px !important;
+  }
+}
+#myModal .carousel-indicators li {
+  bottom: -30px;
+  border-radius: 100px;
+  background: none;
+  border: solid 2px white;
+}
+@media (min-width: 992px) {
+  #myModal .carousel-indicators li {
+    height: 10px;
+  }
+}
+#myModal .carousel-indicators li:hover {
+  background: white;
+}
+#myModal .carousel-indicators li.active {
+  background: white;
 }
