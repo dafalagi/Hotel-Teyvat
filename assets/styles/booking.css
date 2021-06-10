@@ -1,14 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 html,
 body {
   padding: 0 10px;
   font-family: "Poppins", sans-serif;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
+    url(../img/gerbang-handara.jpg);
+  background-size: cover;
+  background-position: center center;
 }
 /* Navbar */
 .navbar {
-  padding: 0.5rem;
+  padding: 0rem;
   text-shadow: 1px 1px rgb(83, 83, 83);
-  background-color: #214fc6;
+  background: linear-gradient(rgba(0, 0, 0, 0.116), rgba(0, 0, 0, 0.11));
+}
+
+.navbar-brand {
+  margin-left: 3rem;
+  font-family: "Lobster", sans-serif;
+  font-size: 30px;
+  padding: 1rem;
+  margin-right: 10rem;
+}
+
+#navbarNav {
+  font-size: 20px;
+  margin-right: 2rem;
+}
+
+#navbarNav a {
+  padding: 0 2rem;
 }
 
 /* Form */

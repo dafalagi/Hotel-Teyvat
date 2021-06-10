@@ -30,7 +30,7 @@
     data-aos="fade-down">
 
         <div class="container-fluid">
-        <a class="navbar-brand" href="../index.html">Home</a>
+        <span class="navbar-brand">Hotel Teyvat</span>
     <button 
         class="navbar-toggler" 
         type="button" 
@@ -44,6 +44,9 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item active">
+            <a class="nav-link active" href="../index.html">Home</a>
+          </li>  
+          <li class="nav-item active">
             <a class="nav-link active" href="#booking">Booking</a>
           </li>
           <li class="nav-item">
@@ -55,6 +58,7 @@
 <!-- akhir navbar -->
 
 <!-- form -->
+<div>
 <form>
   <div class="wrapperform" id="booking" data-aos="fade-up"
      data-aos-duration="1500">
@@ -93,6 +97,7 @@
     </div>
   </div>
 </form>
+</div>
 
   <!-- akhir form -->
 
