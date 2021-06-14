@@ -327,11 +327,13 @@ a:hover {
 .sm-text {
   font-size: 15px;
 }
-h3 {
+.welcome {
   text-align: center;
+  color: #000;
 }
 .msg-info {
   text-align: center;
+  color: #000;
 }
 .navbar-brand a {
   color: black;
