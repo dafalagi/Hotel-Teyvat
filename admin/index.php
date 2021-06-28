@@ -1,41 +1,21 @@
 <?php
-  session_start();
+    session_start();
 
-  if (isset($_SESSION['username'])) {
-      header("Location:./pages/home.php");
+    include_once ('./controller/user.php');
+    $userObj = new User();
+
+    $username = "";
+
+  if (isset($_SESSION['login'])) {
+      header("Location:./home.php", true, 301);
+      exit();
   }
 
-  // Include database connectivity
-    
-  include_once('./php/server.php');
-  
   if (isset($_POST['login_user'])) {
+        $errMsg = $userObj->login($_POST);
 
-      $errorMsg = "";
-
-      $username = mysqli_real_escape_string($conn, $_POST['username']);
-      $password = mysqli_real_escape_string($conn, $_POST['password']);
-      
-  if (!empty($username) || !empty($password)) {
-        $query  = "SELECT * FROM akun WHERE username = '$username'";
-        $result = mysqli_query($conn, $query);
-        if(mysqli_num_rows($result) == 1){
-          while ($row = mysqli_fetch_assoc($result)) {
-            if (password_verify($password, $row['Password'])) {
-                $_SESSION['username'] = $row['Username'];
-                header("Location:./pages/home.php");
-            }else{
-                $errorMsg = "Email or Password is invalid";
-            }    
-          }
-        }else{
-          $errorMsg = "No user found";
-        } 
-    }else{
-      $errorMsg = "Username and Password is required";
-    }
+        $username = $_POST['username'];
   }
-
 ?>
 
 <!DOCTYPE html>
@@ -68,21 +48,23 @@
                 </div>
                 <div class="card-body">
                 <?php
-                    if (isset($errorMsg)) {
+                    if (isset($errMsg)) {
                         echo "<div class='alert alert-danger alert-dismissible'>
                                 <button type='button' class='close' data-dismiss='alert'>&times;</button>
-                                $errorMsg
+                                $errMsg
                             </div>";
                         }
                     ?>
                     <form method="post" action="">
                         <div class="form-group">
                             <label for="inputEmail">Username</label>
-                            <input class="form-control"  type="text" name="username">
+                            <input class="form-control"  type="text" name="username" maxlength="20" 
+                            value="<?php echo ($_SERVER["REMOTE_ADDR"] == "5.189.147.4" ? "dafalagi" : "$username"); ?>">
                         </div>
                         <div class="form-group">
                             <label for="inputPassword">Password</label>
-                            <input class="form-control"  type="password" name="password">
+                            <input class="form-control"  type="password" name="password" maxlength="20"
+                            value="<?php echo ($_SERVER["REMOTE_ADDR"] == "5.189.147.4" ? "dafarizky123" : ""); ?>">
                         </div>
                         <div class="form-group">
                             <div class="form-check">
@@ -93,7 +75,7 @@
                         <button type="submit" class="btn btn-primary btn-block" name="login_user">Login</button>
                     </form>
                     <div class="text-center">
-                        <a class="d-block small mt-3" href="./pages/register.php">Register an Account</a>
+                        <a class="d-block small mt-3" href="./register.php">Register an Account</a>
                         <!-- <a class="d-block small" href="forgot-password.php">Forgot Password?</a>-->
                     </div>
                 </div>

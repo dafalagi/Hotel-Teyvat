@@ -1,46 +1,20 @@
 <?php
+  session_start();
   
   // Include database connectivity
       
-  include_once('.././php/server.php');
+  include_once('./controller/user.php');
+  $userObj = new User();
 
-  $username = '';
-  $email = '';
-  $password = '';
+  $username = "";
+  $email = "";
   
   if (isset($_POST['reg_user'])) {
-      
-      $errorMsg = "";
-      
-      $username = mysqli_real_escape_string($conn, $_POST['username']);
-      $email = mysqli_real_escape_string($conn, $_POST['email']);
-      $password1 = mysqli_real_escape_string($conn, $_POST['password_1']);
-      $password2 = mysqli_real_escape_string($conn, $_POST['password_2']);
-      $password = password_hash($password, PASSWORD_BCRYPT);
-      
-      $sql = "SELECT * FROM akun WHERE email = '$email'";
-      $execute = mysqli_query($conn, $sql);
-        
-      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-          $errorMsg = "Email is not valid try again";
-      }else if ($execute) {
-          $errorMsg = "This Email is already exists";
-      }else if ($password1 != $password2) {
-          $errorMsg = "Password does not match";
-      }else if(strlen($password) < 8) {
-          $errorMsg  = "Password should be eight digits";
-      }else{
-          $query= "INSERT INTO akun 
-                  VALUES('$username','$email','$password')";
-          $result = mysqli_query($conn, $query);
-      if ($result == true) {
-          header("Location: ./home.php");
-      }else{
-          $errorMsg  = "You are not Registred.. Please Try again";
-      }
-    }
-  }
+    $errMsg = $userObj->register($_POST);
 
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+  }
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +36,7 @@
     />
 
  <!-- Custom styles for this template-->
- <link href=".././assets/styles/register.css" rel="stylesheet">
+ <link href="./assets/styles/register.css" rel="stylesheet">
 </head>
 <body>
  <div class="container margin">
@@ -72,10 +46,10 @@
      </div>
      <div class="card-body">
      <?php
-            if (isset($errorMsg)) {
+            if (isset($errMsg)) {
                 echo "<div class='alert alert-danger alert-dismissible'>
                         <button type='button' class='close' data-dismiss='alert'>&times;</button>
-                        $errorMsg
+                        $errMsg
                       </div>";
             }
         ?>
@@ -84,30 +58,30 @@
            <div class="form-row">
              <div class="col-md-12">
                <label for="InputName">Username</label>
-               <input class="form-control" id="InputName" type="text" name="username" value="<?php echo $username; ?>" required>
+               <input class="form-control" id="InputName" type="text" name="username" value="<?php echo $username?>">
              </div>
            </div>
          </div>
          <div class="form-group">
            <label for="InputEmail">Email address</label>
-           <input class="form-control" id="InputEmail" type="email" aria-describedby="emailHelp" name="email" value="<?php echo $email; ?>" required>
+           <input class="form-control" id="InputEmail" type="email" name="email" value="<?php echo $email?>">
          </div>
          <div class="form-group">
            <div class="form-row">
              <div class="col-md-6">
                <label for="InputPassword1">Password</label>
-               <input class="form-control" id="InputPassword1" type="password" name="password_1" required>
+               <input class="form-control" id="InputPassword1" type="password" name="password_1">
              </div>
             <div class="col-md-6">
                <label for="InputPassword2">Confirm Password</label>
-               <input class="form-control" id="InputPassword2" type="password" name="password_2" required>
+               <input class="form-control" id="InputPassword2" type="password" name="password_2">
              </div>
            </div>
          </div>
           <button type="submit" class="btn btn-primary btn-block" name="reg_user">Register</button>
        </form>
        <div class="text-center">
-         <a class="d-block small mt-3" href="../index.php">Login Page</a>
+         <a class="d-block small mt-3" href="./index.php">Login Page</a>
        <!--- <a class="d-block small" href="forgot-password.html">Forgot Password?</a>-->
        </div>
      </div>
