@@ -59,12 +59,12 @@
                         <div class="form-group">
                             <label for="inputEmail">Username</label>
                             <input class="form-control"  type="text" name="username" maxlength="20" 
-                            value="<?php echo ($_SERVER["REMOTE_ADDR"] == "5.189.147.4" ? "dafalagi" : "$username"); ?>">
+                            value="<?php echo ($_SERVER["REMOTE_ADDR"] == "5.189.147.4" ? "admin" : "$username"); ?>">
                         </div>
                         <div class="form-group">
                             <label for="inputPassword">Password</label>
                             <input class="form-control"  type="password" name="password" maxlength="20"
-                            value="<?php echo ($_SERVER["REMOTE_ADDR"] == "5.189.147.4" ? "dafarizky123" : ""); ?>">
+                            value="<?php echo ($_SERVER["REMOTE_ADDR"] == "5.189.147.4" ? "adminhotel" : ""); ?>">
                         </div>
                         <div class="form-group">
                             <div class="form-check">

@@ -6,6 +6,7 @@
     include_once ('./controller/resepsionis.php');
     include_once ('./controller/manajer.php');
     include_once ('./controller/kamar.php');
+    include_once ('./controller/inap.php');
     include ('./controller/secureUrl.php');
 
     $userObj = new User();
@@ -13,6 +14,7 @@
     $respObj = new Resepsionis();
     $manajerObj = new Manajer();
     $kamarObj = new Kamar();
+    $inapObj = new Inap();
 
     if (!isset($_SESSION['login'])) {
         header("Location:./index.php", true, 301);
@@ -83,6 +85,8 @@
                                     <a class="nav-link" href="home.php?t=<?php echo $manajer?>">Manajer</a>
                                     <?php $kamar = base64_url_encode("Kamar") ?>
                                     <a class="nav-link" href="home.php?t=<?php echo $kamar?>">Kamar</a>
+                                    <?php $inap = base64_url_encode("Inap") ?>
+                                    <a class="nav-link" href="home.php?t=<?php echo $inap?>">Inap</a>
                                 </nav>
                             </div>
                         </div>
@@ -132,6 +136,8 @@
                                                     include_once('content/manajer.php');
                                                 }else if ($table == "Kamar"){
                                                     include_once('content/kamar.php');
+                                                }else if ($table == "Inap"){
+                                                    include_once('content/inap.php');
                                                 }
                                         ?>
                             </div>
@@ -151,6 +157,8 @@
                                 include_once('content/add/manajer.php');
                             }else if ($id == "Kamar"){
                                 include_once('content/add/kamar.php');
+                            }else if ($id == "Inap"){
+                                include_once('content/add/inap.php');
                             }
                         }else if (isset($_GET['edit'])){
                             $id = base64_url_decode($_GET['edit']);
@@ -160,6 +168,7 @@
                             $resp = $respObj->getResp($id);
                             $manajer = $manajerObj->getManajer($id);
                             $kamar = $kamarObj->getKamar($id);
+                            $inap = $inapObj->getInap($id);
                             if ($user->num_rows == 1){
                                 include_once('content/edit/user.php');
                             }else if ($tamu->num_rows == 1){
@@ -170,6 +179,8 @@
                                 include_once('content/edit/manajer.php');
                             }else if ($kamar->num_rows == 1){
                                 include_once('content/edit/kamar.php');
+                            }else if ($inap->num_rows == 1){
+                                include_once('content/edit/inap.php');
                             }
                         }else if (isset($_GET['delete'])){
                             $id = base64_url_decode($_GET['delete']);
@@ -179,6 +190,7 @@
                             $resp = $respObj->getResp($id);
                             $manajer = $manajerObj->getManajer($id);
                             $kamar = $kamarObj->getKamar($id);
+                            $inap = $inapObj->getInap($id);
                             if ($user->num_rows == 1){
                                 include_once('content/delete/user.php');
                             }else if ($tamu->num_rows == 1){
@@ -189,6 +201,8 @@
                                 include_once('content/delete/manajer.php');
                             }else if ($kamar->num_rows == 1){
                                 include_once('content/delete/kamar.php');
+                            }else if ($inap->num_rows == 1){
+                                include_once('content/delete/inap.php');
                             }
                         }else {
                             include_once('content/mainpage.php');
