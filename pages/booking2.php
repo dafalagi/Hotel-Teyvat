@@ -1,24 +1,22 @@
 <?php
 session_start();
-require_once '../booking/booking-proses.php';
+require '../booking/booking-proses.php';
 
+  if(isset($_POST["submit1"])){
+    detailtambah($_POST);
+    // echo detailtambah($_POST);
 
-
-  if(isset($_POST["submit"])){
-    tambah($_POST);
-    // echo tambah($_POST);
-
-    if(tambah($_POST) > -2 ){
+    if(detailtambah($_POST) > -2 ){
       echo"
       <script>
         alert('data berhasil ditambahkan');
-        document.location.href = 'booking2.php';
+        document.location.href = '#';
       </script>
       ";
   } else {
       echo"<script>
         alert('data gagal ditambahkan');
-        document.location.href = 'booking.php';
+        document.location.href = '#';
       </script>
       ";
   }
@@ -89,29 +87,60 @@ require_once '../booking/booking-proses.php';
 
 <!-- form -->
 <div>
-<form action="booking.php" method="post">
-  <div class="wrapperform" id="booking" data-aos="fade-up"
+<form action="booking2.php" method="post">
+  <div class="wrapperform" id="booking2" data-aos="fade-up"
      data-aos-duration="1500">
     <div class="title">
       Booking Hotel
     </div>
     <div class="form">
       <div>
-      <div class="input_field">
-          <label>Id tamu</label>
-          <input type="text" class="input" name="NoId" required>
+        <div class="input_field">
+          <label>No Transaksi</label>
+          <input type="text" class="input" name="NoTransaksi" required>
         </div>
         <div class="input_field">
-          <label>Nama Tamu</label>
-          <input type="text" class="input" name="Nama" required>
+          <label>Nominal</label>
+          <input type="text" class="input" name="Nominal" required>
         </div>
         <div class="input_field">
-          <label>Tipe Id</label>
-          <input type="tepiid" class="input" name="TipeId" required>
+          <label>Tipe Bayar</label>
+          <input type="text" class="input" name="TipeBayar" required>
         </div>
-      </div>
-      <div class="input_field">
-        <input type="submit" value="Pesan" class="btn" name="submit">
+        <div class="input_field">
+          <label>Atas Nama</label>
+          <input type="text" class="input" name="AtasNama" required>
+        </div>
+        <div class="input_field">
+          <label>Check in</label>
+          <input type="date" class="input" name="CheckIn" required>
+        </div>
+        <div class="input_field">
+          <label>Check Out</label>
+          <input type="date" class="input" name="CheckOut" required>
+        </div>
+        <div class="input_field">
+          <label>Jumlah Tamu</label>
+          <input type="text" class="input" name="JumlahTamu" required>
+        </div>
+        <div class="input_field">
+          <label>Jenis Kamar</label>
+          <div class="custom_select" required>
+            <select name="TipeKamar">
+              <option value=""></option>
+              <option value="Standard Room">Standard Room</option>
+              <option value="Superior Room">Superior Room</option>
+              <option value="Deluxe Room">Deluxe Room</option>
+              <option value="Suite">Suite</option>
+            </select>
+          </div>
+        </div>
+        <div class="input_field">
+          <label>Id Pegawai</label>
+          <input type="text" class="input" name="IdPegawai" required>
+        </div>
+        <div class="input_field">
+        <input type="submit" value="Pesan" class="btn" name="submit1">
       </div>
     </div>
   </div>

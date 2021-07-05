@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "password";
 $database = "hotel_teyvat";
 
 // Membuat koneksi
