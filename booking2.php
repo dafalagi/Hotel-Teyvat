@@ -7,7 +7,7 @@ $bookingObj = new Booking();
 if (isset($_POST['submit'])){
   $booking = $bookingObj->booking($_POST);
   if($booking == true){
-    header('Location:./home.php',true ,301);
+    header('Location:./home.php', true, 301);
     exit();
   }
 }
