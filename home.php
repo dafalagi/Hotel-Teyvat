@@ -1,9 +1,16 @@
 <?php
 session_start();
+include_once('./php/controller/user.php');
+
+$userObj = new User();
 
 if(!isset($_SESSION['login'])) {
     header('Location:../index.php', true, 301);
     exit();
+}
+
+if (isset($_GET['logout'])){
+  $userObj->logout();
 }
 
 ?>
@@ -22,9 +29,10 @@ if(!isset($_SESSION['login'])) {
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
     <!--Custom CSS-->
-    <link rel="stylesheet" href="../assets/styles/home.css" />
+    <link rel="stylesheet" href="./assets/styles/home.css" />
   </head>
   <body>
     <!--Header-->
@@ -53,11 +61,13 @@ if(!isset($_SESSION['login'])) {
             <li class="nav-item">
               <a class="nav-link" href="#">About</a>
             </li>
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <span><?php echo $_SESSION['username']?></span>
-            </li>
+            <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
+                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a href="home.php?logout=true" class="dropdown-item">Logout</a>
+                    </div>
+                </li>
           </ul>
         </div>
       </nav>
@@ -89,18 +99,18 @@ if(!isset($_SESSION['login'])) {
 
             <div class="row margin" id="gallery" data-toggle="modal" data-target="#myModal">
               <div class="col-12 col-sm-6 col-lg-6">
-                <img class="w-100" src="../assets/img/gerbang-handara.jpg" alt="First slide" data-target="#myCarousel" data-slide-to="0" />
+                <img class="w-100" src="./assets/img/gerbang-handara.jpg" alt="First slide" data-target="#myCarousel" data-slide-to="0" />
               </div>
               <div class="col-12 col-sm-6 col-lg-6">
-                <img class="w-100" src="../assets/img/madakaripura.jpg" alt="Second slide" data-target="#myCarousel" data-slide-to="1" />
+                <img class="w-100" src="./assets/img/madakaripura.jpg" alt="Second slide" data-target="#myCarousel" data-slide-to="1" />
               </div>
             </div>
             <div class="row" id="gallery" data-toggle="modal" data-target="#myModal">
               <div class="col-12 col-sm-6 col-lg-6">
-                <img class="w-100" src="../assets/img/purwakarta.jpg" alt="Third slide" data-target="#myCarousel" data-slide-to="2" />
+                <img class="w-100" src="./assets/img/purwakarta.jpg" alt="Third slide" data-target="#myCarousel" data-slide-to="2" />
               </div>
               <div class="col-12 col-sm-6 col-lg-6">
-                <img class="w-100" src="../assets/img/prambanan.jpg" alt="Fourth slide" data-target="#myCarousel" data-slide-to="3" />
+                <img class="w-100" src="./assets/img/prambanan.jpg" alt="Fourth slide" data-target="#myCarousel" data-slide-to="3" />
               </div>
             </div>
 
@@ -121,16 +131,16 @@ if(!isset($_SESSION['login'])) {
                       </ol>
                       <div class="carousel-inner">
                         <div class="carousel-item active">
-                          <img class="d-block w-100" src="../assets/img/gerbang-handara.jpg" alt="First slide" />
+                          <img class="d-block w-100" src="./assets/img/gerbang-handara.jpg" alt="First slide" />
                         </div>
                         <div class="carousel-item">
-                          <img class="d-block w-100" src="../assets/img/madakaripura.jpg" alt="Second slide" />
+                          <img class="d-block w-100" src="./assets/img/madakaripura.jpg" alt="Second slide" />
                         </div>
                         <div class="carousel-item">
-                          <img class="d-block w-100" src="../assets/img/purwakarta.jpg" alt="Third slide" />
+                          <img class="d-block w-100" src="./assets/img/purwakarta.jpg" alt="Third slide" />
                         </div>
                         <div class="carousel-item">
-                          <img class="d-block w-100" src="../assets/img/prambanan.jpg" alt="Fourth slide" />
+                          <img class="d-block w-100" src="./assets/img/prambanan.jpg" alt="Fourth slide" />
                         </div>
                       </div>
                       <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">

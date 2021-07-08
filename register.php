@@ -5,12 +5,12 @@ include_once('./php/controller/user.php');
 $userObj = new User();
 
 if(isset($_SESSION['login'])) {
-  header('Location:./home.php', true, 301);
+  header('Location:./pages/home.php', true, 301);
   exit();
 }
 
-if(isset($_POST['login'])){
-  $userObj->login($_POST);
+if(isset($_POST['register'])){
+  $userObj->register($_POST);
 }
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ if(isset($_POST['login'])){
     />
 
     <!--Custom CSS-->
-    <link rel="stylesheet" href="./assets/styles/login.css" />
+    <link rel="stylesheet" href="./assets/styles/register.css" />
   </head>
   <body>
   <div class="container px-5 py-5 mx-auto login">
@@ -39,26 +39,31 @@ if(isset($_POST['login'])){
                     <div class="card cd2">
                       <div class="row justify-content-center my-auto">
                         <div class="col-md-8 col-10 my-5">
-                          <h3 class="welcome">Welcome</h3>
-                          <h6 class="msg-info">Please Login to your account</h6>
+                          <h3 class="welcome">Welcome New Member!</h3>
+                          <h6 class="msg-info">Please fill in the field below</h6>
                           <form method="POST">
+                          <div class="form-group">
+                            <label class="form-control-label text-muted">Email</label>
+                            <input type="text" id="username" name="email" placeholder="Email" class="form-control" />
+                          </div>
                           <div class="form-group">
                             <label class="form-control-label text-muted">Username</label>
                             <input type="text" id="username" name="username" placeholder="Username" class="form-control" />
                           </div>
                           <div class="form-group">
                             <label class="form-control-label text-muted">Password</label>
-                            <input type="password" id="password" name="password" placeholder="Password" class="form-control" />
+                            <input type="password" id="password" name="password_1" placeholder="Password" class="form-control" />
                           </div>
-                          <div class="row justify-content-center my-3 px-3"><button class="btn-block btn-color" name="login">Login</button></div>
+                          <div class="form-group">
+                            <label class="form-control-label text-muted">Confirm Password</label>
+                            <input type="password" id="password" name="password_2" placeholder="Password" class="form-control" />
+                          </div>
+                          <div class="row justify-content-center my-3 px-3"><button class="btn-block btn-color" name="register">Register</button></div>
                           </form>
-                          <div class="row justify-content-center my-2">
-                            <a href="#"><small class="text-muted">Forgot Password?</small></a>
-                          </div>
                         </div>
                       </div>
                       <div class="bottom text-center mb-5">
-                        <p>Don't have an account?<a href="./register.php"><button class="btn btn-white ml-2">Create new</button></a></p>
+                        <p>Already have an account?<a href="./index.php"><button class="btn btn-white ml-2">Login</button></a></p>
                       </div>
                     </div>
                     <div class="card cd3">

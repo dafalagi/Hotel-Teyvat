@@ -29,7 +29,7 @@
                         if (password_verify($password, $row['Password'])){
                             $_SESSION['login'] = "true";
                             $_SESSION['username'] = $username;
-                            header('Location:./pages/home.php', true, 301);
+                            header('Location:./home.php', true, 301);
                             exit();
                         }else {
                             return $errMsg = "Email or Password is invalid";
@@ -80,54 +80,7 @@
             }
 
         }
-
-        public function viewUser(){
-            $sql = "SELECT * FROM akun";
-            $result = $this->conn->query($sql);
-
-            return $result;
-        }
-
-        public function insertUser($post){
-            $username = $this->conn->real_escape_string($_POST['username']);
-            $email = $this->conn->real_escape_string($_POST['email']);
-            $password1 = $this->conn->real_escape_string($_POST['password']);
-            $password = password_hash($password1, PASSWORD_BCRYPT);
-
-            $sql = "INSERT INTO akun
-                    VALUES ('$username', '$email', '$password')";
-            $result = $this->conn->query($sql);
-            
-            return $result;
-        }
-
-        public function getUser($id){
-            $sql = "SELECT * FROM akun where username='$id'";
-            $result = $this->conn->query($sql);
-            
-            return $result;
-        }
-
-        public function updateUser($post){
-            $id = $this->conn->real_escape_string($_POST['id']);
-            $username = $this->conn->real_escape_string($_POST['username']);
-            $email = $this->conn->real_escape_string($_POST['email']);
-            $password1 = $this->conn->real_escape_string($_POST['password']);
-            $password = password_hash($password1, PASSWORD_BCRYPT);
-
-            $sql = "UPDATE akun SET username='$username', email='$email', password='$password' WHERE username='$id'";
-            $result = $this->conn->query($sql);
-
-            return $result;
-        }
-
-        public function deleteUser($id){
-            $sql = "DELETE FROM akun WHERE username='$id'";
-            $result = $this->conn->query($sql);
-
-            return $result;
-        }
-
+        
         public function logout(){
             session_unset();
             session_destroy();
