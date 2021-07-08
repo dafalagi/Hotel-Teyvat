@@ -40,6 +40,8 @@
                 $sql3 = "INSERT INTO inap (NoTransaksi, NoId, JumlahTamu, CheckIn, CheckOut)
                         VALUES ('$notransaksi','$noid','$jumlahtamu','$checkin','$checkout')";
                 $result3 = $this->conn->query($sql3);
+
+                return $result3;
             }
         }
     }

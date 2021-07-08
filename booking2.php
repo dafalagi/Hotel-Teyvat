@@ -5,7 +5,11 @@ include_once('./php/controller/booking.php');
 $bookingObj = new Booking();
 
 if (isset($_POST['submit'])){
-  $bookingObj->booking($_POST);
+  $booking = $bookingObj->booking($_POST);
+  if($booking == true){
+    header('Location:./home.php',true ,301);
+    exit();
+  }
 }
 ?>
 
