@@ -97,7 +97,7 @@ if (isset($_POST['submit'])){
         <div class="input_field">
           <label>Jenis Kamar</label>
           <div class="custom_select" required>
-            <select name="tipekamar">
+            <select name="tipekamar" id="tipe">
               <option value=""></option>
               <option value="Standard Room">Standard Room</option>
               <option value="Superior Room">Superior Room</option>
@@ -107,12 +107,31 @@ if (isset($_POST['submit'])){
           </div>
         </div>
         <div class="input_field">
-          <label>Nominal</label>
-          <input type="text" class="input" name="nominal" required>
+          <label>Jumlah Kasur</label>
+          <div class="custom_select" required>
+            <select name="tipekamar" id="kasur">
+              <option value=""></option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
         </div>
         <div class="input_field">
-          <label>Tipe Bayar</label>
-          <input type="text" class="input" name="tipebayar" required>
+          <label>Harga Kamar</label>
+          <input type="text" class="input" id="harga" required>
+        </div>
+        <div class="input_field">
+          <label>Jumlah Kamar</label>
+          <input type="text" class="input" id="jumlahkamar" onchange="total_tagihan()" required>
+        </div>
+        <div class="input_field">
+          <label>Total Tagihan</label>
+          <input type="text" class="input" id="tagihan" required>
+        </div>
+        <div class="input_field">
+          <label>Total Bayar</label>
+          <input type="text" class="input" name="nominal" required>
         </div>
         <div class="input_field">
         <input type="submit" value="Pesan" class="btn" name="submit">
@@ -125,7 +144,7 @@ if (isset($_POST['submit'])){
 <div>
 
 </div>
-<!-- Boostrap -->
+<!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" 
       crossorigin="anonymous">
@@ -136,5 +155,37 @@ if (isset($_POST['submit'])){
   <script>
     AOS.init();
   </script>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.js"></script>
+
+  <!-- Custom Script -->
+  <script type="text/javascript">
+var htmlobjek;
+$(document).ready(function(){
+
+  $("#kasur").change(function(){
+    var tipe = $("#tipe").val();
+    var kasur = $("#kasur").val();
+
+	$.ajax({
+		url	: 'php/fetch_harga.php',
+		data	: 'get_tipe='+tipe+'&get_kasur='+kasur,
+		type	: 'POST',
+		dataType: 'html',
+		success	: function(msg){
+	             $("#harga").val(msg);
+	        }
+	});
+  });
+});
+</script>
+<script>
+  function total_tagihan() {
+   var harga = document.getElementById("harga");
+   var jumlah = document.getElementById("jumlahkamar");
+   var tagihan = document.getElementById("tagihan");
+   tagihan.value = harga.value * jumlah.value;
+  };
+</script>
   </body>
 </html>
