@@ -50,7 +50,7 @@ if (isset($_GET['logout'])){
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse " id="navbarNav">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -61,13 +61,13 @@ if (isset($_GET['logout'])){
             <li class="nav-item">
               <a class="nav-link" href="#">About</a>
             </li>
-            <li class="nav-item dropdown">
+              <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
                     aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a href="home.php?logout=true" class="dropdown-item">Logout</a>
                     </div>
-                </li>
+              </li>
           </ul>
         </div>
       </nav>
@@ -79,10 +79,9 @@ if (isset($_GET['logout'])){
       <div class="container-fluid">
         <div class="row">
           <div class="col-6 cover-text">
-            <h1 class="cover-heading">indonesia</h1>
+            <h1 class="cover-heading">Hello</h1>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, nihil debitis. Accusamus animi enim esse deserunt maxime totam dolor
-              consectetur cum dicta quod nesciunt architecto ducimus nemo ipsa, molestias voluptas?
+            "Setiap kali Anda ditanya apakah Anda dapat melakukan pekerjaan, beritahu mereka, ‘Saya bisa!’. Kemudian sibuklah dalam mencari tahu cara melakukannya." - Theodore Roosevelt
             </p>
             <button type="button" class="btn btn-outline-light">Explore</button>
           </div>
