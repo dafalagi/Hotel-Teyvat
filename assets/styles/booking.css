@@ -1,11 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 html,
 body {
+  width: 100%;
+  height: 100%;
   font-family: "Poppins", sans-serif;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
     url(../img/gerbang-handara.jpg);
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
 }
 /* Navbar */
 .navbar {

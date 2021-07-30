@@ -7,7 +7,7 @@ $bookingObj = new Booking();
 if (isset($_POST['submit'])){
   $booking = $bookingObj->booking($_POST);
   if($booking == true){
-    header('Location:./home.php', true, 301);
+    header('Location:./bookingsuc.php', true, 301);
     exit();
   }
 }
@@ -73,7 +73,7 @@ if (isset($_POST['submit'])){
 <div>
 <form action="booking2.php" method="post">
   <div class="wrapperform" id="booking2" data-aos="fade-up"
-     data-aos-duration="1500">
+     data-aos-duration="1000">
     <div class="title">
       Booking Hotel
     </div>
