@@ -3,14 +3,6 @@ session_start();
 include_once('./php/controller/booking.php');
 
 $bookingObj = new Booking();
-
-if (isset($_POST['submit'])){
-  $booking = $bookingObj->booking($_POST);
-  if($booking == true){
-    header('Location:./home.php', true, 301);
-    exit();
-  }
-}
 ?>
 
 <!doctype html>
@@ -70,7 +62,9 @@ if (isset($_POST['submit'])){
 <!-- akhir navbar -->
 
 <!-- Main -->
-    <div class="cardun col-5" data-aos="fade-up"
+<?php
+?>
+    <div class="cardun col-5"
      data-aos-duration="1000">
         <div class="card p-4 text-right">
             <div class="card-body">
@@ -78,31 +72,53 @@ if (isset($_POST['submit'])){
                 <!-- card body -->
                 <div class="row">
                     <div class="col-4">No Kamar</div>
-                    <div class="col-md-auto">: xxxxx</div>
+                    <div class="col-md-auto">: <?php
+                    if (isset($_POST['submit'])){
+                      $data = $bookingObj->booking($_POST);
+                    }
+                      while ($row = $data->fetch_assoc()) {
+                        $size = count($row);
+                        if (!isset($no)) {
+                          $no = 1;
+                        }
+                        if ($no < $_POST['jumlahkamar']) {
+                          echo $row['NoKamar'].",";
+                        }else {
+                          echo $row['NoKamar'];
+                        }
+                        $no++;
+                        $checkin = $row['CheckIn'];
+                        $checkout = $row['CheckOut'];
+                        $jeniskamar = $row['TipeKamar'];
+                        $jumlahkamar = $_POST['jumlahkamar'];
+                        $jumlahkasur = $row['JumlahKasur'];
+                        $total = $row['Nominal'];
+                      }
+                    ?></div>
                 </div>
                 <div class="row">
                     <div class="col-4">Check in</div>
-                    <div class="col-md-auto">: xx-xx-xxxx</div>
+                    <div class="col-md-auto">: <?php echo $checkin ?></div>
                 </div>
                 <div class="row">
                     <div class="col-4">Check out</div>
-                    <div class="col-md-auto">: xx-xx-xxxx</div>
+                    <div class="col-md-auto">: <?php echo $checkout ?></div>
                 </div>
                 <div class="row">
                     <div class="col-4">Jenis Kamar</div>
-                    <div class="col-md-auto">: xxxxx</div>
+                    <div class="col-md-auto">: <?php echo $jeniskamar ?></div>
                 </div>
                 <div class="row">
-                    <div class="col-4">Jumlah kasur</div>
-                    <div class="col-md-auto">: xx</div>
+                    <div class="col-4">Jumlah Kasur</div>
+                    <div class="col-md-auto">: <?php echo $jumlahkasur ?></div>
                 </div>
                 <div class="row">
                     <div class="col-4">Jumlah Kamar</div>
-                    <div class="col-md-auto">: xx</div>
+                    <div class="col-md-auto">: <?php echo $jumlahkamar ?></div>
                 </div>
                 <div class="row">
                     <div class="col-4">Total</div>
-                    <div class="col-md-auto">: Rp. xxxxxxx</div>
+                    <div class="col-md-auto">: Rp. <?php echo $total ?></div>
                 </div>
                 <div class="text-end">
                     <a href="./home.php" class="btn btn-primary">Ok</a>

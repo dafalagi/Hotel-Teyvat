@@ -1,16 +1,5 @@
 <?php
 session_start();
-include_once('./php/controller/booking.php');
-
-$bookingObj = new Booking();
-
-if (isset($_POST['submit'])){
-  $booking = $bookingObj->booking($_POST);
-  if($booking == true){
-    header('Location:./bookingsuc.php', true, 301);
-    exit();
-  }
-}
 ?>
 
 <!doctype html>
@@ -71,7 +60,7 @@ if (isset($_POST['submit'])){
 
 <!-- form -->
 <div>
-<form action="booking2.php" method="post">
+<form action="bookingsuc.php" method="POST">
   <div class="wrapperform" id="booking2" data-aos="fade-up"
      data-aos-duration="1000">
     <div class="title">
@@ -120,7 +109,7 @@ if (isset($_POST['submit'])){
         </div>
         <div class="input_field">
           <label>Jumlah Kamar</label>
-          <input type="text" class="input" id="jumlahkamar" onchange="total_tagihan()" required>
+          <input type="text" class="input" name="jumlahkamar" id="jumlahkamar" onchange="total_tagihan()" required>
         </div>
         <div class="input_field">
           <label>Total Tagihan</label>
@@ -131,7 +120,7 @@ if (isset($_POST['submit'])){
           <input type="text" class="input" name="nominal" required>
         </div>
         <div class="input_field">
-        <input type="submit" value="Pesan" class="btn" name="submit">
+        <button type="submit" name="submit" class="btn">Pesan</button>
       </div>
     </div>
   </div>

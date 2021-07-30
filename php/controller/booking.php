@@ -49,7 +49,7 @@
                     $idinap = $this->conn->real_escape_string($row2['IdInap']);
                     $jumlahkasur = $this->conn->real_escape_string($_POST['jumlahkasur']);
                     $tipekamar = $this->conn->real_escape_string($_POST['tipekamar']);
-                    $jumlahkamar = $this->conn->real_escape_string($_POST['jumlahkamar']);
+                    $jumlahkamar = (int)($_POST['jumlahkamar']);
 
                     $sql5 = "SELECT * FROM kamar WHERE JumlahKasur='$jumlahkasur' 
                             AND TipeKamar='$tipekamar' LIMIT $jumlahkamar";
@@ -59,16 +59,17 @@
                         $nokamar = $row3['NoKamar'];
                         $sql6 = "INSERT INTO detailinap VALUES 
                                 ('$idinap','$nokamar')";
-                        $this->conn->query($sql6);
+                        $result6 = $this->conn->query($sql6);
+                    }
 
-                        $data = array(
-                            array($nokamar),
-                            $jumlahkasur,
-                            $jumlahkamar,
-                            $checkin,
-                            $checkout,
-                            $nominal
-                        );
+                    if ($result6 == true) {
+                        $sql7 = "SELECT * FROM kamar INNER JOIN detailinap INNER JOIN inap INNER JOIN transaksi
+                        ON kamar.`NoKamar`=detailinap.`NoKamar` AND detailinap.`IdInap`=inap.`IdInap` 
+                        AND inap.`NoTransaksi`=transaksi.`NoTransaksi`
+                        WHERE detailinap.`IdInap`='$idinap'";
+                        $result7 = $this->conn->query($sql7);
+
+                        return $result7;
                     }
                 }
             }
