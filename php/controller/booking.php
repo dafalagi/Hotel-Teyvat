@@ -41,7 +41,9 @@
                         VALUES ('$notransaksi','$noid','$jumlahtamu','$checkin','$checkout')";
                 $result3 = $this->conn->query($sql3);
 
-                return $result3;
+                if ($result3 == true) {
+                    
+                }
             }
         }
     }
