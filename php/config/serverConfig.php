@@ -1,6 +1,6 @@
 <?php
     const dbHost = "localhost";
     const dbUsername = "root";
-    const dbPassword = "password";
+    const dbPassword = "root";
     const dbName = "hotel_teyvat";
 ?>
