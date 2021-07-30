@@ -57,9 +57,6 @@ if(isset($_POST['login'])){
                           </div>
                         </div>
                       </div>
-                      <div class="bottom text-center mb-5">
-                        <p>Don't have an account?<a href="./register.php"><button class="btn btn-white ml-2">Create new</button></a></p>
-                      </div>
                     </div>
                     <div class="card cd3">
                       <div class="my-auto mx-md-5 px-md-5 right">

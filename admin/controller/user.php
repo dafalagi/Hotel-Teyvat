@@ -43,7 +43,7 @@
             }
         }
 
-        public function register($post){
+        /*public function register($post){
             $username = $this->conn->real_escape_string($_POST['username']);
             $email = $this->conn->real_escape_string($_POST['email']);
             $password1 = $this->conn->real_escape_string($_POST['password_1']);
@@ -79,7 +79,7 @@
                 }
             }
 
-        }
+        }*/
 
         public function viewUser(){
             $sql = "SELECT * FROM akun";
