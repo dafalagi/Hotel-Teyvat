@@ -106,7 +106,7 @@ if (isset($_POST['submit'])){
         <div class="input_field">
           <label>Jumlah Kasur</label>
           <div class="custom_select" required>
-            <select name="tipekamar" id="kasur">
+            <select name="jumlahkasur" id="kasur">
               <option value=""></option>
               <option value="1">1</option>
               <option value="2">2</option>

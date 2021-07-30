@@ -42,7 +42,34 @@
                 $result3 = $this->conn->query($sql3);
 
                 if ($result3 == true) {
+                    $sql4 = "SELECT * FROM inap ORDER BY IdInap DESC LIMIT 1";
+                    $result4 = $this->conn->query($sql4);
+                    $row2 = $result4->fetch_assoc();
+
+                    $idinap = $this->conn->real_escape_string($row2['IdInap']);
+                    $jumlahkasur = $this->conn->real_escape_string($_POST['jumlahkasur']);
+                    $tipekamar = $this->conn->real_escape_string($_POST['tipekamar']);
+                    $jumlahkamar = $this->conn->real_escape_string($_POST['jumlahkamar']);
+
+                    $sql5 = "SELECT * FROM kamar WHERE JumlahKasur='$jumlahkasur' 
+                            AND TipeKamar='$tipekamar' LIMIT $jumlahkamar";
+                    $result5 = $this->conn->query($sql5);
                     
+                    while ($row3 = $result5->fetch_assoc()) {
+                        $nokamar = $row3['NoKamar'];
+                        $sql6 = "INSERT INTO detailinap VALUES 
+                                ('$idinap','$nokamar')";
+                        $this->conn->query($sql6);
+
+                        $data = array(
+                            array($nokamar),
+                            $jumlahkasur,
+                            $jumlahkamar,
+                            $checkin,
+                            $checkout,
+                            $nominal
+                        );
+                    }
                 }
             }
         }
