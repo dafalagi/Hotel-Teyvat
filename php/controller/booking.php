@@ -19,7 +19,7 @@
 
         public function booking($post){
             $nominal = $this->conn->real_escape_string($_POST['nominal']);
-            $tipebayar = $this->conn->real_escape_string($_POST['tipebayar']);
+            $tipebayar = "tunai";
             $atasnama = $this->conn->real_escape_string($_SESSION['nama']);
 
             $sql1 = "INSERT INTO transaksi (Nominal, TipeBayar, AtasNama)
