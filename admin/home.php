@@ -218,6 +218,18 @@
                             }else if ($transaksi->num_rows == 1){
                                 include_once('content/delete/transaksi.php');
                             }
+                        }else if (isset($_GET['backup'])) {
+                            include_once('controller/backup.php');
+
+                            $backupObj = new Backup();
+                            $msg = $backupObj->beginBackup();
+                            include_once('content/mainpage.php');
+                        }else if (isset($_GET['restore'])) {
+                            include_once('controller/restore.php');
+
+                            $restoreObj = new Restore();
+                            $msg = $restoreObj->beginRestore();
+                            include_once('content/mainpage.php');
                         }else {
                             include_once('content/mainpage.php');
                         }
